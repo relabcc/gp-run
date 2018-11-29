@@ -1,28 +1,35 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { Provider } from 'react-redux';
+import { HashRouter, Route, Switch } from 'react-router-dom';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
-  }
-}
+import createStore from './state/createStore';
+import Box from './components/Box';
+import ThemeProvider from './components/ThemeProvider';
+
+import HomePage from './pages/index';
+import QuizPage from './pages/quiz';
+import QuestionPage from './containers/QuestionPage';
+import ResultPage from './containers/ResultPage';
+
+import PageEnhancer from './PageEnhancer';
+
+const App = () => (
+  <Provider store={createStore()}>
+    <Box height="100%">
+      <ThemeProvider>
+        <HashRouter>
+          <PageEnhancer>
+            <Switch>
+              <Route exact path="/" component={HomePage} />
+              <Route path="/quiz/question/:id" component={QuestionPage} />
+              <Route path="/quiz/result" component={ResultPage} />
+              <Route path="/quiz" component={QuizPage} />
+            </Switch>
+          </PageEnhancer>
+        </HashRouter>
+      </ThemeProvider>
+    </Box>
+  </Provider>
+);
 
 export default App;
