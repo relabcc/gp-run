@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import ReactGA from 'react-ga';
 
 import LinksButton from '../../components/LinksButton';
 import Flex from '../../components/Flex';
@@ -41,7 +42,14 @@ const QuestionPage = ({ match: { params: { id: pageId } }, setAnswer, answers })
                   px={['0em', null, '1em']}
                   py={['1em', null, null, null, null, null, null, '2em']}
                   to={isLast ? '/quiz/result' : `/quiz/question/${Number(pageId) + 1}`}
-                  onClick={() => setAnswer(qId, optId)}
+                  onClick={() => {
+                    setAnswer(qId, optId);
+                    ReactGA.event({
+                      category: 'quiz',
+                      action: (optId ? 'right' : 'left') + pageId,
+                      label: process.env.REACT_APP_TRACKING_LABEL,
+                    });
+                  }}
                   mx={['0.25em', null, '1em']}
                   active={answers[qId] === optId}
                 >

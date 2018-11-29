@@ -14,6 +14,8 @@ import FB from 'react-icons/lib/io/social-facebook';
 import Close from 'react-icons/lib/fa/close';
 import { Scrollbars } from 'react-custom-scrollbars';
 import { withContentRect } from 'react-measure';
+import ReactPixel from 'react-facebook-pixel';
+import ReactGA from 'react-ga';
 
 import Button from '../../components/Button';
 import Flex from '../../components/Flex';
@@ -61,14 +63,14 @@ const CleanLink = (props) => (
   />
 );
 
-const LinksButton = ({ children, ...props }) => (
+const LinksButton = ({ children, onClick, ...props }) => (
   <IconButton
     display="block"
     color="black"
     hoverBg="teal"
     w={[1, null, null, '15em']}
     m="0.5em"
-    is={CleanLink}
+    is={(p) => <CleanLink onClick={onClick} {...p} />}
     {...props}
   >
     <Box w="4em" align="left">{children}</Box>
@@ -82,6 +84,20 @@ LinksButton.propTypes = {
 class PetitionForm extends PureComponent {
   componentDidMount() {
     this.props.measure();
+  }
+
+  trackClick = (action) => () => {
+    let fbaction;
+    if (action === 'donate') fbaction = 'New_Donation_btn';
+    if (action === 'fbshare') fbaction = 'New_FB_btn';
+    ReactPixel.trackCustom(fbaction, {
+      custom_param1: process.env.REACT_APP_TRACKING_LABEL,
+    });
+    ReactGA.event({
+      category: '：thankyoupage',
+      action,
+      label: process.env.REACT_APP_TRACKING_LABEL,
+    });
   }
 
   render() {
@@ -184,12 +200,14 @@ class PetitionForm extends PureComponent {
                   <LinksButton
                     icon={<Money />}
                     href="https://act.greenpeace.org/page/4723/donate/1?ref=marathon_thankyou_page"
+                    onClick={this.trackClick('donate')}
                   >
                     {getText('petition.donate')}
                   </LinksButton>
                   <LinksButton
                     icon={<FB />}
                     href="https://www.facebook.com/sharer.php?u=https%3A%2F%2Fact.gp/2JlrNWw"
+                    onClick={this.trackClick('fbshare')}
                   >
                     {getText('petition.FB')}
                   </LinksButton>
@@ -226,6 +244,10 @@ PetitionForm.propTypes = {
   submitted: PropTypes.bool,
 };
 
+// PetitionForm.defaultProps = {
+//   submitted: true,
+// }
+
 const allFileds = fields.concat('emailOkTaiwan');
 
 const formikConfig = {
@@ -237,6 +259,15 @@ const formikConfig = {
     setSubmitting,
   }) => {
     const neededValues = pick(values, allFileds);
+    ReactPixel.track('Lead', {
+      content_name: process.env.REACT_APP_TRACKING_LABEL,
+      content_category: 'Petition Signup'
+    });
+    ReactGA.event({
+      category: 'petitions',
+      action: 'signup',
+      label: process.env.REACT_APP_TRACKING_LABEL,
+    });
     props.onSubmit({
       ...neededValues,
       emailOkTaiwan: neededValues.emailOkTaiwan ? 'Y' : 'N',

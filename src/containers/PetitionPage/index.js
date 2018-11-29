@@ -6,6 +6,7 @@ import scroll from 'window-scroll';
 import isNumber from 'lodash/isNumber';
 import get from 'lodash/get';
 import mapKeys from 'lodash/mapKeys';
+import ReactGA from 'react-ga';
 
 import Container from '../../components/Container';
 import Box from '../../components/Box';
@@ -124,7 +125,15 @@ class PetitionPage extends PureComponent {
     this.dummyRef = ref;
   }
 
-  handleOpen = () => this.setState({ modalOpen: true })
+  handleOpen = () => {
+    this.setState({ modalOpen: true });
+    
+    ReactGA.event({
+      category: 'petitions',
+      action: 'enter',
+      label: process.env.REACT_APP_TRACKING_LABEL,
+    });
+  }
   handleClose = () => this.setState({ modalOpen: false })
 
   handleSubmit = (data) => {
