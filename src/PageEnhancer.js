@@ -7,10 +7,10 @@ import ReactPixel from 'react-facebook-pixel';
 class ScrollToTop extends Component {
   componentDidMount() {
     const debug = process.env.NODE_ENV === 'development';
-    ReactGA.initialize('UA-36627671-1', { debug });
+    ReactGA.initialize(process.env.REACT_APP_GA_ID, { debug });
     ReactGA.pageview(window.location.pathname + '#' + this.props.location.pathname + window.location.search);
 
-    ReactPixel.init('1534311166840921', null, { debug });
+    ReactPixel.init(process.env.REACT_APP_PIXEL_ID, null, { debug });
     ReactPixel.pageView();
   }
 

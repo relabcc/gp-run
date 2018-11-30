@@ -32,7 +32,7 @@ export default (SubComp) => {
       this.setState({ isLoading: true });
       data['supporter.NOT_TAGGED_28'] = 'TW';
       data['supporter.NOT_TAGGED_6'] = `01/01/${data['supporter.NOT_TAGGED_6']}`;
-      data.sessionId = `${this.uuid}-server10228`;
+      data.sessionId = `${this.uuid}-server10008`;
       return request(SUBMIT_ENDPOINT, {
         method: 'POST',
         headers: {
