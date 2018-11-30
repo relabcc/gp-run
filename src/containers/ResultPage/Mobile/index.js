@@ -5,7 +5,7 @@ import getText from '../../../text';
 import Box from '../../../components/Box';
 import Border from '../../../components/Border';
 import Text from '../../../components/Text';
-import LinksButton from '../../../components/LinksButton';
+import LinksButtonhref from '../../../components/LinksButtonhref';
 
 import smallquestion from './smallquestion.svg';
 import garbage from './garbage.svg';
@@ -78,12 +78,12 @@ const Mobile = () => (
             </object>
           </Box>
         ))}
-        <LinksButton
+        <LinksButtonhref
           px="3em"
-          to="/"
+          href={process.env.REACT_APP_PETITION}
         >
           {getText('petition.mobilesupport')}
-        </LinksButton>
+        </LinksButtonhref>
       </Box>
     </Box>
   </Box>

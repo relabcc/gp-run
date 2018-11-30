@@ -6,7 +6,6 @@ import createStore from './state/createStore';
 import Box from './components/Box';
 import ThemeProvider from './components/ThemeProvider';
 
-import HomePage from './pages/index';
 import QuizPage from './pages/quiz';
 import QuestionPage from './containers/QuestionPage';
 import ResultPage from './containers/ResultPage';
@@ -20,10 +19,9 @@ const App = () => (
         <HashRouter>
           <PageEnhancer>
             <Switch>
-              <Route exact path="/" component={HomePage} />
-              <Route path="/quiz/question/:id" component={QuestionPage} />
-              <Route path="/quiz/result" component={ResultPage} />
-              <Route path="/quiz" component={QuizPage} />
+              <Route exact path="/" component={QuizPage} />
+              <Route path="/question/:id" component={QuestionPage} />
+              <Route path="/result" component={ResultPage} />
             </Switch>
           </PageEnhancer>
         </HashRouter>

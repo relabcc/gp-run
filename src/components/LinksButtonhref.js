@@ -10,6 +10,7 @@ const LinksButton = ({ children, ...props }) => (
       <Link.noUnderline
         color="black"
         hoverColor="white"
+        target="_blank"
         {...p}
       />
     )}

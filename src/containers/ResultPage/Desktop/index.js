@@ -6,7 +6,7 @@ import Container from '../../../components/Container';
 import Box from '../../../components/Box';
 import Border from '../../../components/Border';
 import Text from '../../../components/Text';
-import LinksButton from '../../../components/LinksButton';
+import LinksButtonhref from '../../../components/LinksButtonhref';
 import { resultContainerWidth } from '../../../components/ThemeProvider/theme';
 
 import firstStep from './firstStep.svg';
@@ -112,13 +112,13 @@ const Destop = () => (
             </object>
           </Box>
         ))}
-        <LinksButton
+        <LinksButtonhref
           px="5em"
           f="1.5em"
-          to="/"
+          href={process.env.REACT_APP_PETITION}
         >
           {getText('petition.support')}
-        </LinksButton>
+        </LinksButtonhref>
       </ResultContainer>
     </Box>
   </Box>
