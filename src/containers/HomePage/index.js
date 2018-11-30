@@ -91,7 +91,7 @@ const HomePage = (props) => (
         <Box textAlign="center">
           <LinksButton
             px={['5em', null, '6em']}
-            to="/quiz/question/1"
+            to="/question/1"
             f={['1em', null, null, null, '1.2em', null, null, '2em']}
             onClick={() => {
               ReactGA.event({

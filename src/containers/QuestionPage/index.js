@@ -41,7 +41,7 @@ const QuestionPage = ({ match: { params: { id: pageId } }, setAnswer, answers })
                   w={['12em', null, '15em', null, null, null, null, '25em']}
                   px={['0em', null, '1em']}
                   py={['1em', null, null, null, null, null, null, '2em']}
-                  to={isLast ? '/quiz/result' : `/quiz/question/${Number(pageId) + 1}`}
+                  to={isLast ? '/result' : `/question/${Number(pageId) + 1}`}
                   onClick={() => {
                     setAnswer(qId, optId);
                     ReactGA.event({
