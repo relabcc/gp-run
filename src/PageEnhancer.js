@@ -1,6 +1,4 @@
 import { Component } from 'react';
-import { withRouter } from 'react-router-dom';
-
 import ReactGA from 'react-ga';
 import ReactPixel from 'react-facebook-pixel';
 
@@ -14,18 +12,18 @@ class ScrollToTop extends Component {
     ReactPixel.pageView();
   }
 
-  componentDidUpdate(prevProps) {
-    const { location } = this.props;
-    if (location !== prevProps.location) {
-      window.scrollTo(0, 0);
-      ReactGA.pageview(window.location.pathname + '#' + location.pathname);
-      ReactPixel.pageView();
-    }
-  }
+  // componentDidUpdate(prevProps) {
+  //   const { location } = this.props;
+  //   if (location !== prevProps.location) {
+  //     window.scrollTo(0, 0);
+  //     ReactGA.pageview(window.location.pathname + '#' + location.pathname);
+  //     ReactPixel.pageView();
+  //   }
+  // }
 
   render() {
     return this.props.children;
   }
 }
 
-export default withRouter(ScrollToTop);
+export default (ScrollToTop);
