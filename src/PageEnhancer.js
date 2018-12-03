@@ -6,7 +6,7 @@ class ScrollToTop extends Component {
   componentDidMount() {
     const debug = process.env.NODE_ENV === 'development';
     ReactGA.initialize(process.env.REACT_APP_GA_ID, { debug });
-    ReactGA.pageview(window.location.pathname + '#' + this.props.location.pathname + window.location.search);
+    ReactGA.pageview(window.location.pathname + window.location.search);
 
     ReactPixel.init(process.env.REACT_APP_PIXEL_ID, null, { debug });
     ReactPixel.pageView();
