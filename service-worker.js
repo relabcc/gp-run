@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/taiwan/Global/taiwan/code/2018/marathon/precache-manifest.7e441ca1a6f4272ef1b62642c9531f94.js"
+  "/taiwan/Global/taiwan/code/2018/marathon/precache-manifest.fdfbb806d72ba03d987c48d04b578391.js"
 );
 
 workbox.clientsClaim();
