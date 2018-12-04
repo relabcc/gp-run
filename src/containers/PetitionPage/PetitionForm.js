@@ -100,7 +100,7 @@ class PetitionForm extends PureComponent {
       custom_param1: process.env.REACT_APP_TRACKING_LABEL,
     });
     ReactGA.event({
-      category: '：thankyoupage',
+      category: 'thankyoupage',
       action,
       label: process.env.REACT_APP_TRACKING_LABEL,
     });
