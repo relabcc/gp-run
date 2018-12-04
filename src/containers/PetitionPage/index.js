@@ -37,8 +37,8 @@ const remapFields = {
 };
 
 class PetitionPage extends PureComponent {
-  static getDerivedStateFromProps({ data, location: { search } }) {
-    const searchParams = queryString.parse(search);
+  static getDerivedStateFromProps({ data }) {
+    const searchParams = queryString.parse(window.location.search);
     const forceOpen = +searchParams.open === 1;
     if (!data.jsonContent) return { forceOpen };
     const jsonContent = JSON.parse(data.jsonContent);
@@ -127,7 +127,7 @@ class PetitionPage extends PureComponent {
 
   handleOpen = () => {
     this.setState({ modalOpen: true });
-    
+
     ReactGA.event({
       category: 'petitions',
       action: 'enter',
