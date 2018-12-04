@@ -1,5 +1,4 @@
 import { PureComponent, createElement } from 'react';
-import uuidv1 from 'uuid/v1';
 import queryString from 'query-string';
 
 import request from '../../utils/request';
@@ -15,7 +14,6 @@ export default (SubComp) => {
 
     componentDidMount() {
       this.request();
-      this.uuid = uuidv1().replace(/-/g, '');
     }
 
     request = () => {
@@ -32,7 +30,6 @@ export default (SubComp) => {
       this.setState({ isLoading: true });
       data['supporter.NOT_TAGGED_28'] = 'TW';
       data['supporter.NOT_TAGGED_6'] = `01/01/${data['supporter.NOT_TAGGED_6']}`;
-      data.sessionId = `${this.uuid}-server10008`;
       return request(SUBMIT_ENDPOINT, {
         method: 'POST',
         headers: {

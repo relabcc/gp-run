@@ -44,13 +44,19 @@ const fields = [
 ];
 
 const schema = object().shape({
-  fullName: string().required(getText('validation.required')),
+  fullName: string()
+    .matches(/^[^\n\d\`\~\!\@\#\$\%\^\&\*\(\)\-\_\=\+\[\]\{\}\\\|\;\:\'\\"\,\<\.\>\/\?]+$/, getText('validation.noSpecial'))
+    .required(getText('validation.required')),
   email: string().email(getText('validation.email')).required(getText('validation.required')),
   dateOfBirth: number(getText('validation.number'))
     .moreThan((new Date()).getFullYear() - 120, getText('validation.tooOld'))
     .lessThan((new Date()).getFullYear() - 20, getText('validation.tooYoung'))
     .required(getText('validation.required')),
-  phoneNumber: string().required(getText('validation.required')),
+  phoneNumber: string()
+    .matches(/^\d+$/, getText('validation.phone'))
+    .min(8, getText('validation.phoneLength'))
+    .max(10, getText('validation.phoneLength'))
+    .required(getText('validation.required')),
 });
 
 const CleanLink = (props) => (
