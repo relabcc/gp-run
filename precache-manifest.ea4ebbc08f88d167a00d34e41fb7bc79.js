@@ -4,8 +4,8 @@ self.__precacheManifest = [
     "url": "/taiwan/Global/taiwan/code/2018/marathon/static/media/start.345b50a1.svg"
   },
   {
-    "revision": "c09120b48f4ed50d82e7",
-    "url": "/taiwan/Global/taiwan/code/2018/marathon/static/js/main.c09120b4.chunk.js"
+    "revision": "3508b3e1b86d88a876b3",
+    "url": "/taiwan/Global/taiwan/code/2018/marathon/static/js/main.3508b3e1.chunk.js"
   },
   {
     "revision": "9729448ec2616b3f96866ec612182c3b",
@@ -92,7 +92,7 @@ self.__precacheManifest = [
     "url": "/taiwan/Global/taiwan/code/2018/marathon/static/css/1.06f0f5b0.chunk.css"
   },
   {
-    "revision": "b366838cc93fee3f3374a5c03f1dc9b8",
+    "revision": "e5e5b70be96195f8663492a5f8c38c9e",
     "url": "/taiwan/Global/taiwan/code/2018/marathon/index.html"
   }
 ];
