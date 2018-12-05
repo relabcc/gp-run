@@ -13,6 +13,8 @@ import warmup from './warmup.svg';
 import injury from './injury.svg';
 import whatshouldwedo from './whatshouldwedo.svg';
 
+import track from '../ga-track';
+
 const ups = [
   {
     img: warmup,
@@ -81,6 +83,7 @@ const Mobile = () => (
         <LinksButtonhref
           px="3em"
           href={process.env.REACT_APP_PETITION}
+          onClick={track}
         >
           {getText('petition.mobilesupport')}
         </LinksButtonhref>

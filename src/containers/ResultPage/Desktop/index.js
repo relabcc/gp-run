@@ -17,6 +17,7 @@ import transhMan from './transhMan.svg';
 
 import CloudLR from '../CloudLR';
 import CloudUD from '../CloudUD';
+import track from '../ga-track';
 
 const ups = [
   {
@@ -116,6 +117,7 @@ const Destop = () => (
           px="5em"
           f="1.5em"
           href={process.env.REACT_APP_PETITION}
+          onClick={track}
         >
           {getText('petition.support')}
         </LinksButtonhref>
